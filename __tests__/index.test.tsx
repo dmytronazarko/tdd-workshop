@@ -1,17 +1,33 @@
 /**
  * @jest-environment jsdom
  */
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import Home from '@/pages/index'
+import Add from "@/pages/add";
 
 describe('Home', () => {
-  it('renders a heading', () => {
-    render(<Home />)
+    it('renders a button ADD', () => {
+        render(<Home/>)
 
-    const heading = screen.getByRole('heading', {
-      name: /welcome to next\.js!/i,
+        const button = screen.getByRole('button', {
+            name: /ADD/i,
+        })
+
+        expect(button).toBeInTheDocument()
+    })
+    it('open /add page on ADD button click', () => {
+        render(<Home/>)
+
+        const button = screen.getByRole('button', {
+            name: /ADD/i,
+        })
+        button.click()
+        render(<Add/>)
+
+        const currentPathName = window.location.pathname
+
+        expect(currentPathName).toContain('/add');
     })
 
-    expect(heading).toBeInTheDocument()
-  })
+
 })
