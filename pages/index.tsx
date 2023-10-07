@@ -3,6 +3,7 @@ import Image from 'next/image'
 
 import styles from '@/pages/index.module.css'
 import Link from "next/link";
+import PlantCard from "../plant-card/plant-card";
 
 export default function Home() {
 
@@ -18,10 +19,12 @@ export default function Home() {
             </Head>
 
             <main>
-                <Link href='/add'>
-                    <button>
-                        ADD
-                    </button>
+                <div>
+                    <PlantCard/>
+                </div>
+
+                <Link href='/add' aria-label='add-link'>
+                    ADD
                 </Link>
 
             </main>
