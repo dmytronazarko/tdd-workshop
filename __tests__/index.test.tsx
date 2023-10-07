@@ -17,7 +17,6 @@ describe('Home', () => {
     })
 
 
-
     it('open /add page on ADD button click', async () => {
         render(<Home/>)
 
@@ -39,7 +38,7 @@ describe('Home', () => {
     })
 
     describe('Plant card', () => {
-        const getPlant = () => {
+        const getPlant = (): HTMLElement => {
             render(<Home/>)
             return screen.getByTestId('plant')
         }
@@ -47,15 +46,48 @@ describe('Home', () => {
 
         it('should contain name of plant', () => {
             const plant = getPlant();
-            expect(plant)
+
+            const planNameLabel = plant.querySelector("[data-testid='plant-name']");
+
+            expect(planNameLabel.textContent).not.toBe('')
         })
 
-        it('should contain photo of plant', () => {})
+        it('should contain photo of plant', () => {
+            const plant = getPlant();
 
-        it('should contain interval of plant', () => {})
-        it('should contain water button', () => {})
-        it('should contain edit button', () => {})
-        it('should contain remove button', () => {})
+            const planNameLabel = plant.querySelector("[data-testid='plant-photo']");
+
+            expect(planNameLabel.getAttribute('src')).not.toBe('')
+        })
+
+        it('should contain water period of plant in numeric days format', () => {
+            const plant = getPlant();
+
+            const planNameLabel = plant.querySelector("[data-testid='daysLeftToWater']");
+
+            expect(Number(planNameLabel.textContent)).not.toBeNaN();
+        })
+        it('should contain water button', () => {
+            const plant = getPlant();
+
+            const waterButton = plant.querySelector("[data-testid='waterButton']");
+
+            expect(waterButton).toBeInTheDocument()
+        })
+        it('should contain edit button', () => {
+            const plant = getPlant();
+
+            const waterButton = plant.querySelector("[data-testid='editButton']");
+
+            expect(waterButton).toBeInTheDocument()
+        })
+        it('should contain remove button', () => {
+            const plant = getPlant();
+
+            const waterButton = plant.querySelector("[data-testid='removeButton']");
+
+            expect(waterButton).toBeInTheDocument()
+        })
     })
 
 

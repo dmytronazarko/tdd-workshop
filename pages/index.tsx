@@ -11,6 +11,10 @@ export default function Home() {
 
     }
 
+    const plants = []
+
+    const plantImageUrl = 'https://static.vecteezy.com/system/resources/previews/022/362/760/original/ficus-ginseng-or-banyan-tree-png.png';
+
     return (
         <div className={styles.container}>
             <Head>
@@ -20,7 +24,7 @@ export default function Home() {
 
             <main>
                 <div>
-                    <PlantCard/>
+                    <PlantCard name="foobarname" imageUrl={plantImageUrl} daysLeftToWater={2}  />
                 </div>
 
                 <Link href='/add' aria-label='add-link'>
